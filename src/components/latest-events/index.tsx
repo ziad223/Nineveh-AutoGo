@@ -21,7 +21,7 @@ interface LastestEventsProps {
 const eventss = [
   {
     id: 1,
-    created_at: "5/8/2025",
+    created_at: "05/02/2025",
     image: "/images/hero-1.webp",
     title: "غسيل السيارات المتنقل الفاخر",
     category: "غسيل السيارات المتنقل",
@@ -30,7 +30,7 @@ const eventss = [
   },
   {
     id: 2,
-    created_at: "8/8/2025",
+    created_at: "12/03/2025",
     image: "/images/hero-2.webp",
     title: "خدمة تلميع خارجي متكاملة",
     category: "تلميع السيارات",
@@ -39,7 +39,7 @@ const eventss = [
   },
   {
     id: 3,
-    created_at: "10/8/2025",
+    created_at: "25/04/2025",
     image: "/images/hero-3.webp",
     title: "تنظيف داخلي عميق مع تعقيم",
     category: "تنظيف داخلي شامل",
@@ -48,7 +48,7 @@ const eventss = [
   },
   {
     id: 4,
-    created_at: "12/8/2025",
+    created_at: "10/05/2025",
     image: "/images/hero-4.webp",
     title: "خدمة تعقيم وتعطير السيارة",
     category: "تعقيم السيارات",
@@ -57,7 +57,7 @@ const eventss = [
   },
   {
     id: 5,
-    created_at: "15/8/2025",
+    created_at: "18/06/2025",
     image: "/images/hero-1.webp",
     title: "تلميع الزجاج والمرايا الاحترافي",
     category: "تلميع الزجاج والمرايا",
@@ -66,7 +66,7 @@ const eventss = [
   },
   {
     id: 6,
-    created_at: "20/8/2025",
+    created_at: "28/07/2025",
     image: "/images/hero-2.webp",
     title: "غسيل المحرك بالبخار الآمن",
     category: "غسيل المحرك بالبخار",
@@ -75,7 +75,7 @@ const eventss = [
   },
   {
     id: 7,
-    created_at: "25/8/2025",
+    created_at: "05/09/2025",
     image: "/images/hero-3.webp",
     title: "تجفيف وتلميع الإطارات",
     category: "تجفيف وتلميع الإطارات",
@@ -84,7 +84,7 @@ const eventss = [
   },
   {
     id: 8,
-    created_at: "30/8/2025",
+    created_at: "15/10/2025",
     image: "/images/hero-4.webp",
     title: "خدمة الاشتراك الشهري للغسيل",
     category: "خدمة غسيل اشتراك شهري",
@@ -92,6 +92,7 @@ const eventss = [
       "اشترك في باقتنا الشهرية واستمتع بغسيل منتظم لسيارتك في الوقت والمكان الذي تختاره مع خصومات حصرية وخدمة مميزة.",
   },
 ];
+
 
 
 const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) => {
@@ -140,9 +141,12 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
                   </div>
 
                     <div className = ' px-5'>
-                      <p className="lg:text-[16px] text-sm font-medium text-[#080C22] mt-3 lg:leading-[30px] line-clamp-2">
+                       <div className="flex items-center justify-between w-full mt-3">
+                        <p className="lg:text-[14px] text-sm font-medium text-[#080C22] lg:leading-[30px] line-clamp-2">
                       {event.title}
                     </p>
+                    <p className='font-medium text-xs text-gray-400'>{event.created_at}</p>
+                       </div>
 
                     <div className="flex items-center gap-3 my-4">
                     
