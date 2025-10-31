@@ -40,9 +40,13 @@ const Faq = () => {
   return (
     <section className="bg-[#f9f9f9] py-16">
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-10">
-          الأسئلة الشائعة
-        </h2>
+       <div className="text-center mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-primary">الأسئلة الشائعة</h2>
+  <p className="text-gray-600 text-xs md:text-sm mt-2 max-w-md mx-auto">
+    تعرف على إجابات أكثر الأسئلة شيوعًا حول خدمات الغسيل والتلميع المتنقلة لدينا — لتكون تجربتك معنا أسهل وأوضح.
+  </p>
+</div>
+
 
         <div className="space-y-4 text-right">
           {faqs.map((item, index) => (

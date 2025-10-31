@@ -9,6 +9,7 @@ import { getHomeData  } from "@/lib/serverActions";
 import { cookies } from "next/headers";
 import PaymentStatusModal from "@/components/PaymentStatusModal";
 import Faq from "../../src/components/faq";
+import Packages from "../../src/components/packages";
 
 interface LayoutProps {
   params: Promise<{ locale: string | any }>;
@@ -36,6 +37,7 @@ export default async function HomePage({ params }: LayoutProps) {
    <About data={aboutUsData} />
    <Sections categories = {categories}/>
    <LastestEvents events = {events} locale = {locale}/>
+   <Packages/>
    <HowOrder steps = {steps}/>
    <Faq />
    <TechnicalSupport/>
