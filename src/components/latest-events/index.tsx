@@ -138,6 +138,8 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={false}
                     />
+                    <p className='font-medium text-xs  absolute bottom-0 left-0 bg-gray-300 px-7 h-[30px] flex items-center justify-center'>{event.created_at}</p>
+
                   </div>
 
                     <div className = ' px-5'>
@@ -145,7 +147,6 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
                         <p className="lg:text-[14px] text-sm font-medium text-[#080C22] lg:leading-[30px] line-clamp-2">
                       {event.title}
                     </p>
-                    <p className='font-medium text-xs text-gray-400'>{event.created_at}</p>
                        </div>
 
                     <div className="flex items-center gap-3 my-4">
@@ -157,7 +158,7 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
                     </div>
                     
                     <button 
-                      className="flex items-center px-3 pb-2 justify-center lg:mt-auto cursor-pointer font-bold text-sm h-[54px] w-full rounded-[15px] transition duration-300 bg-transparent border border-gray-300 text-black hover:bg-primary hover:text-white  "
+                      className="flex items-center px-3  justify-center lg:mt-auto cursor-pointer font-bold text-sm h-[54px] w-full rounded-[15px] transition duration-300 bg-transparent border border-gray-300 text-black hover:bg-primary hover:text-white  "
                       aria-label={`Book now for ${event.title}`}
                     >
                       {t('bookNow')}
