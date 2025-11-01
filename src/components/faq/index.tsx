@@ -4,7 +4,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const faqs = [
   {
-    question: "كيف يمكنني حجز خدمة الغسيل المتنقلة؟",
+    question: " يمكنني حجز خدمة الغسيل المتنقلة؟",
     answer:
       "يمكنك الحجز بسهولة من خلال الموقع باختيار نوع الخدمة والموقع والوقت المناسب لك، وسيصل فريقنا في الموعد المحدد.",
   },
@@ -55,7 +55,7 @@ const Faq = () => {
               className="bg-white rounded-2xl shadow-md overflow-hidden transition-all"
             >
               <button
-                className="w-full flex justify-between items-center p-4 text-[#121212] font-semibold text-sm  focus:outline-none"
+                className="w-full flex justify-between items-center p-4 text-[#121212] font-semibold md:text-sm text-xs  focus:outline-none"
                 onClick={() => toggle(index)}
               >
                 {item.question}
@@ -68,7 +68,7 @@ const Faq = () => {
               <div
                 className={`transition-all duration-300 ${
                   openIndex === index ? "max-h-40 p-4 pt-0" : "max-h-0 p-0"
-                } overflow-hidden text-gray-600 text-sm md:text-base leading-relaxed`}
+                } overflow-hidden text-gray-600 md:text-sm text-xs leading-relaxed`}
               >
                 {item.answer}
               </div>
