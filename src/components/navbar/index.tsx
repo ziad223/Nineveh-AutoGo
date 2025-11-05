@@ -137,7 +137,7 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
       return (
         <div className="hidden lg:flex items-center gap-2">
           <Link
-            href={`/${locale}`}
+            href={`/${locale}/register`}
             className="h-[54px] flex items-center justify-center hover:bg-primary hover:text-white duration-300 transition text-sm rounded-[15px] bg-transparent border border-primary text-primary font-bold px-5"
           >
             {t("newAccount")}
@@ -219,27 +219,27 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
 
         <ul className="hidden lg:flex items-center gap-6 text-sm text-[#000]">
           <li>
-            <Link href={`/${locale}`} className="text-sm hover:text-primary transition duration-300">
+            <Link href={`/${locale}/about-us`} className="text-sm hover:text-primary transition duration-300">
               {t("aboutUs")}
             </Link>
           </li>
           <li>
-            <Link href={`/${locale}`} className="text-sm hover:text-primary transition duration-300">
+            <Link href={`/${locale}/categories`} className="text-sm hover:text-primary transition duration-300">
               {t("categories")}
             </Link>
           </li>
           <li>
-            <Link href={`/${locale}`} className="text-sm hover:text-primary transition duration-300">
+            <Link href={`/${locale}/latest-events`} className="text-sm hover:text-primary transition duration-300">
               {t("latestEvents")}
             </Link>
           </li>
           <li>
-            <Link href={`/${locale}`} className="text-sm hover:text-primary transition duration-300">
+            <Link href={`/${locale}/how-order`} className="text-sm hover:text-primary transition duration-300">
               {t("howToOrder")}
             </Link>
           </li>
           <li>
-            <Link href={`/${locale}`} className="text-sm hover:text-primary transition duration-300">
+            <Link href={`/${locale}/technical-support`} className="text-sm hover:text-primary transition duration-300">
               {t("support")}
             </Link>
           </li>
@@ -257,22 +257,22 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
           >
             <ul className="flex flex-col gap-3 text-sm text-[#000]">
               <li>
-                <Link href={`/${locale}`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${locale}/about-us`} onClick={() => setMenuOpen(false)}>
                   {t("aboutUs")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${locale}/categories`} onClick={() => setMenuOpen(false)}>
                   {t("categories")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${locale}/latest-events`} onClick={() => setMenuOpen(false)}>
                   {t("latestEvents")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${locale}/how-order`} onClick={() => setMenuOpen(false)}>
                   {t("howToOrder")}
                 </Link>
               </li>
@@ -288,7 +288,7 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
               {!isAuthenticated && (
                 <div className="flex flex-col gap-3">
                   <Link
-                    href={`/${locale}`}
+                    href={`/${locale}/register`}
                     onClick={() => setMenuOpen(false)}
                     className="h-[54px] flex items-center justify-center hover:bg-primary hover:text-white duration-300 transition text-sm rounded-[15px] bg-transparent border border-primary text-primary font-bold px-5"
                   >

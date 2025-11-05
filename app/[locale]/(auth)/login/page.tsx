@@ -6,6 +6,8 @@ import Container from '@/components/shared/container';
 import { getTranslations } from 'next-intl/server';
 import bgLeft from '@/public/images/bg-left.png';
 import bgRight from '@/public/images/bg-right.png';
+import { LuUserRound } from "react-icons/lu";
+
 interface LayoutProps {
   params: { locale: string };
 }
@@ -26,14 +28,8 @@ const LoginPage = async ({ params }: LayoutProps) => {
       <div className='flex flex-col items-center justify-center min-h-screen '>
       
         <div className='w-full max-w-md mx-auto text-center'>
-          <Image 
-            src={login} 
-            alt={t('login_image_alt')} 
-            width={40} 
-            height={52} 
-            className='mx-auto' 
-          />
-          <h2 className='font-bold text-[29px] text-[#EB2302] my-2'>
+          <LuUserRound size={80} className='text-primary text-cente mx-auto'/>
+          <h2 className='font-bold text-[29px] text-primary  my-2'>
             {t('login_title')}
           </h2>
           <h3 className='text-lg text-[#989898] mb-6'>
@@ -50,7 +46,7 @@ const LoginPage = async ({ params }: LayoutProps) => {
             <Link
               href={`/${locale}/register`}
               type="button"
-              className='w-full flex items-center justify-center border border-[#EB2302] text-[#EB2302] py-3 rounded-lg font-bold transition duration-300 hover:bg-[#EB2302] hover:text-white mt-3'
+              className='w-full flex items-center justify-center border border-primary  text-primary  py-3 rounded-lg font-bold transition duration-300 hover:bg-primary  hover:text-white mt-3'
             >
               {t('create_account')}
             </Link>

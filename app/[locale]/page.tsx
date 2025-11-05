@@ -37,7 +37,7 @@ export default async function HomePage({ params }: LayoutProps) {
    <About data={aboutUsData} />
    <Sections categories = {categories}/>
    <LastestEvents events = {events} locale = {locale}/>
-   <Packages/>
+   {/* <Packages/> */}
    <HowOrder steps = {steps}/>
    <Faq />
    <TechnicalSupport/>

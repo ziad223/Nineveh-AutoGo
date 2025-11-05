@@ -13,6 +13,7 @@ import apiServiceCall from '@/lib/apiServiceCall';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslations , useLocale } from 'next-intl';
+import { MdLockOutline } from 'react-icons/md';
 
 const loginSchema = z.object({
   mobile: z.string().regex(/^05\d{8}$/, 'mobile_invalid'),
@@ -68,7 +69,6 @@ const LoginForm: React.FC = () => {
     },
     onSuccess: (response) => {
       toast.success(t(response.message) || t('otp_sent'));
-      setIsModalOpen(true);
       setMobile(response.data?.mobile || mobile);
       
       const code = response.data?.code;
@@ -114,21 +114,31 @@ const LoginForm: React.FC = () => {
             </p>
           )}
         </div>
+         <div className="mb-4">
+          <InputComponent
+            register={register}
+            name="mobile"
+            type="text"
+            placeholder='أدخل كلمة المرور'
+            icon={<MdLockOutline  className='text-3xl'/>}
+          />
+          {errors.mobile && (
+            <p className="mt-1 text-sm text-red-600">
+              {t(errors.mobile.message || 'mobile_invalid')}
+            </p>
+          )}
+        </div>
 
         <button
           type="submit"
           disabled={loginMutation.isPending}
-          className='bg-[#EB2302] w-full text-white py-3 rounded-lg font-bold transition duration-300 hover:bg-[#d02c00] disabled:opacity-70 disabled:cursor-not-allowed'
+          className='bg-primary  w-full text-white py-3 rounded-lg font-bold transition duration-300 hover:bg-[#d02c00] disabled:opacity-70 disabled:cursor-not-allowed'
         >
           {loginMutation.isPending ? t('logging_in') : t('login')}
         </button>
       </form>
 
-      <OtpCode 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        mobileNumber={mobile}
-      />
+   
     </>
   );
 };

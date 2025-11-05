@@ -222,7 +222,7 @@ const OtpCode: React.FC<OtpModalProps> = ({ isOpen, onClose, onResendCode , mobi
 
         <div className='flex flex-col gap-5 items-center justify-center mt-10'>
           <Image src={otpCode} alt='OTP Code' width={91} height={188} priority />
-          <h2 className='text-[#EB2302] font-bold text-[22px]'>{t('title')}</h2>
+          <h2 className='text-primary  font-bold text-[22px]'>{t('title')}</h2>
           <p className='text-[#989898] text-base text-center'>
             {t('desc')}
           </p>
@@ -241,7 +241,7 @@ const OtpCode: React.FC<OtpModalProps> = ({ isOpen, onClose, onResendCode , mobi
                   maxLength={1}
                   autoComplete="one-time-code"
                   {...(i === 0 && { autoFocus: true })}
-                  className='md:w-[53px] w-[40px] text-center text-2xl h-[55px] bg-[#f5f5f5] outline-none rounded-[15px] focus:ring-2 focus:ring-[#EB2302]'
+                  className='md:w-[53px] w-[40px] text-center text-2xl h-[55px] bg-[#f5f5f5] outline-none rounded-[15px] focus:ring-2 focus:ring-primary '
                   ref={(el) => (inputsRef.current[i] = el)}
                   onChange={(e) => handleChange(e, i)}
                   onKeyDown={(e) => {
@@ -255,7 +255,7 @@ const OtpCode: React.FC<OtpModalProps> = ({ isOpen, onClose, onResendCode , mobi
             <button
               type="submit"
               disabled={verifyMutation.isPending}
-              className='w-full h-[65px] mt-5 rounded-[15px] text-lg text-white cursor-pointer bg-[#EB2302] hover:bg-[#d02c00] disabled:opacity-70 disabled:cursor-not-allowed'
+              className='w-full h-[65px] mt-5 rounded-[15px] text-lg text-white cursor-pointer bg-primary  hover:bg-[#d02c00] disabled:opacity-70 disabled:cursor-not-allowed'
             >
               {verifyMutation.isPending ? 'جاري التحقق...' : 'تحقق'}
             </button>
@@ -265,14 +265,14 @@ const OtpCode: React.FC<OtpModalProps> = ({ isOpen, onClose, onResendCode , mobi
             {canResend ? (
               <button 
                 onClick={handleResendCode}
-                className="text-[#EB2302] font-medium text-sm hover:underline"
+                className="text-primary  font-medium text-sm hover:underline"
               >
                 إعادة إرسال الكود
               </button>
             ) : (
               <>
                 <span className='text-[#989898] text-sm'>يمكنك طلب كود آخر بعد</span>
-                <span className='text-sm font-medium text-[#EB2302]'>{formatTime(countdown)}</span>
+                <span className='text-sm font-medium text-primary '>{formatTime(countdown)}</span>
               </>
             )}
           </div>
