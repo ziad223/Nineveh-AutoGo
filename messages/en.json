@@ -320,7 +320,16 @@
     "create_account": "Create Account",
     "register_title": "Create a New Account",
     "register_subtitle": "Please enter the following information to complete your registration",
-    "existing_account": "Do you already have an account on Nineveh AutoGo?"
+    "existing_account": "Do you already have an account on Nineveh AutoGo?",
+      "enter_password_placeholder": "Enter password",
+  "confirm_password_placeholder": "Confirm password",
+  "image_preview_alt": "Image preview",
+  "click_to_upload": "Click to upload",
+  "or_drag_image_here": "Or drag image here",
+  "accepted_file_formats": "Accepted file formats",
+  "max_file_size": "Max file size",
+  "register_as_client" : "Register as Client",
+  "register_as_company" : "Register as Company"
   },
 
   "sells": {
@@ -642,5 +651,23 @@
     "title": "Payment Failed",
     "description": "There was an issue with your payment. Please try again.",
     "ok": "OK"
-  }
+  },
+  "company_name_placeholder": "Company Name",
+  "company_name_alt": "Company Name",
+  "email_placeholder": "Email Address",
+  "email_alt": "Email",
+  "mobile_placeholder": "Mobile Number",
+  "mobile_alt": "Mobile",
+  "city_placeholder": "Select City",
+  "city_alt": "City",
+  "license_number_placeholder": "License Number",
+  "license_number_alt": "License",
+  "description_placeholder": "Company Description",
+  "description_alt": "Description",
+  "password_placeholder": "Enter Password",
+  "confirm_password_placeholder": "Confirm Password",
+  "click_to_upload": "Click to upload",
+  "drag_or_click_here": "or drag the image here",
+  "image_size_format": "PNG, JPG, JPEG (Max 2MB)",
+  "create_account_button": "Create Company Account"
 }

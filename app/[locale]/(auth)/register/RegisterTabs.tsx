@@ -3,14 +3,16 @@
 import React, { useState } from 'react';
 import ClientRegisterForm from './ClientRegisterForm';
 import CompanyRegisterForm from './CompanyRegisterForm';
+import Container from '@/components/shared/container';
+import { useTranslations } from 'next-intl';
 
 const RegisterTabs = () => {
   const [activeTab, setActiveTab] = useState<'client' | 'company'>('client');
-
+  const t = useTranslations('RegisterPage')
   return (
-    <div className="w-full max-w-md mx-auto text-center">
-      {/* Tabs */}
-      <div className="flex bg-gray-100 rounded-xl overflow-hidden mb-8">
+      <div>
+           <div className="w-full  mx-auto text-center">
+      <div className="flex max-w-md mx-auto bg-gray-100 rounded-xl overflow-hidden mb-8">
         <button
           onClick={() => setActiveTab('client')}
           className={`w-1/2 py-3 font-bold transition-all duration-300 ${
@@ -19,8 +21,8 @@ const RegisterTabs = () => {
               : 'text-gray-600 hover:text-primary '
           }`}
         >
-          تسجيل كعميل
-        </button>
+           {t('register_as_client')}
+          </button>
 
         <button
           onClick={() => setActiveTab('company')}
@@ -30,15 +32,16 @@ const RegisterTabs = () => {
               : 'text-gray-600 hover:text-primary '
           }`}
         >
-          تسجيل كشركة
+           {t('register_as_company')}
         </button>
       </div>
-
-      {/* Active Form */}
+     <Container >
       <div className="transition-all duration-300">
         {activeTab === 'client' ? <ClientRegisterForm /> : <CompanyRegisterForm />}
       </div>
+      </Container>
     </div>
+      </div>
   );
 };
 

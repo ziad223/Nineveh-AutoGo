@@ -128,172 +128,170 @@ const RegisterForm: React.FC = () => {
 
   return (
     <>
-      <form className="flex flex-col gap-0 w-full" onSubmit={handleSubmit(onSubmit)}>
-        <ToastContainer />
+      <form className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full items-center justify-center" onSubmit={handleSubmit(onSubmit)}>
+  <ToastContainer />
 
-        {/* Name Field */}
-        <div className="mb-1">
-          <InputComponent
-            register={register}
-            name="name"
-            type="text"
-            placeholder={t('name_placeholder')}
-            icon={<Image src={user} alt={t('name_icon_alt')} width={24} height={24} />}
-          />
-          {errors.name && (
-            <p className="mt-1 text-sm text-red-600">{t(errors.name.message)}</p>
-          )}
-        </div>
+  <div className="mb-1">
+    <InputComponent
+      register={register}
+      name="name"
+      type="text"
+      placeholder={t('name_placeholder')}
+      icon={<Image src={user} alt={t('name_icon_alt')} width={24} height={24} />}
+    />
+    {errors.name && (
+      <p className="mt-1 text-sm text-red-600">{t(errors.name.message)}</p>
+    )}
+  </div>
 
-        {/* Mobile Field */}
-        <div className="mb-1">
-          <InputComponent
-            register={register}
-            name="mobile"
-            type="text"
-            placeholder={t('mobile_placeholder')}
-            icon={<Image src={phone} alt={t('mobile_icon_alt')} width={24} height={24} />}
-            className="!mt-0"
-          />
-          {errors.mobile && (
-            <p className="mt-1 text-sm text-red-600">{t(errors.mobile.message)}</p>
-          )}
-        </div>
+  <div className="mb-1">
+    <InputComponent
+      register={register}
+      name="mobile"
+      type="text"
+      placeholder={t('mobile_placeholder')}
+      icon={<Image src={phone} alt={t('mobile_icon_alt')} width={24} height={24} />}
+      className="!mt-0"
+    />
+    {errors.mobile && (
+      <p className="mt-1 text-sm text-red-600">{t(errors.mobile.message)}</p>
+    )}
+  </div>
 
-        {/* Email Field */}
-        <div className="mb-1">
-          <InputComponent
-            register={register}
-            name="email"
-            type="text"
-            placeholder={t('email_placeholder')}
-            icon={<Image src={email} alt={t('email_icon_alt')} width={24} height={24} />}
-            className="!mt-0"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{t(errors.email.message)}</p>
-          )}
-        </div>
+  <div className="mb-1">
+    <InputComponent
+      register={register}
+      name="email"
+      type="text"
+      placeholder={t('email_placeholder')}
+      icon={<Image src={email} alt={t('email_icon_alt')} width={24} height={24} />}
+      className="!mt-0"
+    />
+    {errors.email && (
+      <p className="mt-1 text-sm text-red-600">{t(errors.email.message)}</p>
+    )}
+  </div>
 
-        {/* City Field */}
-        <div className="mb-1">
-          <CustomSelect
-            name="city_id"
-            control={control}
-            options={citiesDataa || []}
-            placeholder={t('city_placeholder')}
-            className="!mt-0"
-            icon={<Image src={location} alt={t('city_icon_alt')} width={24} height={24} />}
-          />
-          {errors.city_id && (
-            <p className="mt-1 text-sm text-primary">{t(errors.city_id.message)}</p>
-          )}
-        </div>
-        <div className="mb-1">
-          <InputComponent
-            register={register}
-            name="email"
-            type="text"
-            placeholder='أدخل كلمة المرور'
-            icon={<MdLockOutline  className='text-3xl'/>}
-            className="!mt-0"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{t(errors.email.message)}</p>
-          )}
-        </div>
-        <div className="mb-1">
-          <InputComponent
-            register={register}
-            name="email"
-            type="text"
-            placeholder='تأكيد كلمة المرور'
-            icon={<MdLockOutline  className='text-3xl'/>}
-            className="!mt-0"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{t(errors.email.message)}</p>
-          )}
-        </div>
+  <div className="mb-1">
+    <CustomSelect
+      name="city_id"
+      control={control}
+      options={citiesDataa || []}
+      placeholder={t('city_placeholder')}
+      className="!mt-0"
+      icon={<Image src={location} alt={t('city_icon_alt')} width={24} height={24} />}
+    />
+    {errors.city_id && (
+      <p className="mt-1 text-sm text-primary">{t(errors.city_id.message)}</p>
+    )}
+  </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="profile_image"
-            className="flex flex-col items-center justify-center w-full h-40 bg-[#f5f5f5] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition relative overflow-hidden"
+  <div className="mb-1">
+    <InputComponent
+      register={register}
+      name="password"
+      type="password"
+      placeholder={t('enter_password_placeholder')}
+      icon={<MdLockOutline className='text-3xl' />}
+      className="!mt-0"
+    />
+    {errors.password && (
+      <p className="mt-1 text-sm text-red-600">{t(errors.password.message)}</p>
+    )}
+  </div>
+
+  <div className="mb-1">
+    <InputComponent
+      register={register}
+      name="confirm_password"
+      type="password"
+      placeholder={t('confirm_password_placeholder')}
+      icon={<MdLockOutline className='text-3xl' />}
+      className="!mt-0"
+    />
+    {errors.confirm_password && (
+      <p className="mt-1 text-sm text-red-600">{t(errors.confirm_password.message)}</p>
+    )}
+  </div>
+
+  <div className="mb-4">
+    <label
+      htmlFor="profile_image"
+      className="flex flex-col items-center justify-center w-full h-40 bg-[#f5f5f5] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition relative overflow-hidden"
+    >
+      {imagePreview ? (
+        <img
+          src={imagePreview}
+          alt={t('image_preview_alt')}
+          className="object-cover w-full h-full rounded-xl"
+        />
+      ) : (
+        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+          <svg
+            aria-hidden="true"
+            className="w-10 h-10 mb-3 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            {imagePreview ? (
-              <img
-                src={imagePreview}
-                alt="Preview"
-                className="object-cover w-full h-full rounded-xl"
-              />
-            ) : (
-              <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg
-                  aria-hidden="true"
-                  className="w-10 h-10 mb-3 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6h.1a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  ></path>
-                </svg>
-                <p className="mb-2 text-sm text-gray-500">
-                  <span className="font-semibold text-primary">اضغط للرفع</span> أو اسحب الصورة هنا
-                </p>
-                <p className="text-xs text-gray-400">PNG, JPG, JPEG (بحد أقصى 2MB)</p>
-              </div>
-            )}
-            <input
-              id="profile_image"
-              type="file"
-              accept="image/*"
-              className="hidden"
-              {...register('profile_image')}
-              onChange={handleImageChange}
-            />
-          </label>
-          {errors.profile_image && (
-            <p className="mt-1 text-sm text-primary">{t(errors.profile_image.message)}</p>
-          )}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6h.1a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            ></path>
+          </svg>
+          <p className="mb-2 text-sm text-gray-500">
+            <span className="font-semibold text-primary">{t('click_to_upload')}</span> {t('or_drag_image_here')}
+          </p>
+          <p className="text-xs text-gray-400">{t('accepted_file_formats')} PNG, JPG, JPEG ({t('max_file_size')} 2MB)</p>
         </div>
+      )}
+      <input
+        id="profile_image"
+        type="file"
+        accept="image/*"
+        className="hidden"
+        {...register('profile_image')}
+        onChange={handleImageChange}
+      />
+    </label>
+    {errors.profile_image && (
+      <p className="mt-1 text-sm text-primary">{t(errors.profile_image.message)}</p>
+    )}
+  </div>
 
-        <div className="flex items-center gap-2 mt-4 mb-1">
-          <input
-            type="checkbox"
-            id="accepted_terms"
-            {...register('accepted_terms')}
-            className="h-5 w-5 text-primary rounded focus:ring"
-          />
-          <label
-            htmlFor="accepted_terms"
-            className="text-sm text-[#989898] flex items-center gap-2"
-          >
-            <span>{t('terms_agree')}</span>
-            <a href="#" className="text-primary underline hover:text-primary font-bold">
-              {t('terms_link')}
-            </a>
-          </label>
-        </div>
-        {errors.accepted_terms && (
-          <p className="mt-1 text-sm text-primary">{t(errors.accepted_terms.message)}</p>
-        )}
+  <div className="flex items-center gap-2 mt-4 mb-1">
+    <input
+      type="checkbox"
+      id="accepted_terms"
+      {...register('accepted_terms')}
+      className="h-5 w-5 text-primary rounded focus:ring"
+    />
+    <label
+      htmlFor="accepted_terms"
+      className="text-sm text-[#989898] flex items-center gap-2"
+    >
+      <span>{t('terms_agree')}</span>
+      <a href="#" className="text-primary underline hover:text-primary font-bold">
+        {t('terms_link')}
+      </a>
+    </label>
+  </div>
+  {errors.accepted_terms && (
+    <p className="mt-1 text-sm text-primary">{t(errors.accepted_terms.message)}</p>
+  )}
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={registerMutation.isPending || isCitiesLoading}
-          className="bg-primary w-full text-white py-3 rounded-xl font-bold transition duration-300 hover:primary mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
-        >
-          {registerMutation.isPending ? t('creating_account') : t('create_account')}
-        </button>
-      </form>
+  <button
+    type="submit"
+    disabled={registerMutation.isPending || isCitiesLoading}
+    className="bg-primary w-full text-white py-3 rounded-xl font-bold transition duration-300 hover:primary mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
+  >
+    {registerMutation.isPending ? t('creating_account') : t('create_account')}
+  </button>
+</form>
+
 
       <OtpCode isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} mobileNumber={mobile} />
     </>

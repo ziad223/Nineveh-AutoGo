@@ -27,7 +27,6 @@ const RegisterPage = ({ locale, t }: { locale: string; t: any }) => {
 
   return (
     <div className="relative">
-      {/* خلفيات الزخارف */}
       <div className="absolute top-20 hidden md:block left-0">
         <Image src={bgLeft} alt="bgLeft" />
       </div>
@@ -35,7 +34,7 @@ const RegisterPage = ({ locale, t }: { locale: string; t: any }) => {
         <Image src={bgRight} alt="bgRight" />
       </div>
 
-      <Container>
+      <div>
         <div className="flex flex-col items-center justify-center min-h-screen py-10">
           <h2 className="font-bold text-[28px] text-primary  mb-2">
             {t('register_title')}
@@ -55,7 +54,7 @@ const RegisterPage = ({ locale, t }: { locale: string; t: any }) => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

@@ -310,7 +310,15 @@
     "create_account": "إنشاء الحساب",
     "register_title": "إنشاء حساب جديد",
     "register_subtitle": "قم بإدخال البيانات التالية لاستكمال تسجيل حسابك",
-    "existing_account": "لديك حساب بالفعل على خبب نينوي ؟"
+    "existing_account": "لديك حساب بالفعل على خبب نينوي ؟",
+     "enter_password_placeholder": "أدخل كلمة المرور",
+  "confirm_password_placeholder": "تأكيد كلمة المرور",
+  "click_to_upload": "اضغط للرفع",
+  "drag_or_click_here": "أو اسحب الصورة هنا",
+  "image_size_format": "PNG, JPG, JPEG (بحد أقصى 2MB)",
+  "create_account_button": "إنشاء حساب كشركة",
+  "register_as_client" : "تسجيل كعميل",
+  "register_as_company" : "تسجيل كشركة"
   },
   "sells": {
     "sales_title": "المبيعات",
@@ -632,5 +640,23 @@
     "title": "فشل الدفع",
     "description": "حدثت مشكلة أثناء الدفع. يرجى المحاولة مرة أخرى.",
     "ok": "موافق"
-  }
+  },
+    "company_name_placeholder": "اسم الشركة",
+  "company_name_alt": "اسم الشركة",
+  "email_placeholder": "البريد الإلكتروني",
+  "email_alt": "البريد الإلكتروني",
+  "mobile_placeholder": "رقم الجوال",
+  "mobile_alt": "رقم الجوال",
+  "city_placeholder": "اختر المدينة",
+  "city_alt": "المدينة",
+  "license_number_placeholder": "رقم السجل التجاري",
+  "license_number_alt": "رقم السجل التجاري",
+  "description_placeholder": "نبذة عن الشركة",
+  "description_alt": "نبذة عن الشركة",
+  "password_placeholder": "أدخل كلمة المرور",
+  "confirm_password_placeholder": "تأكيد كلمة المرور",
+  "click_to_upload": "اضغط للرفع",
+  "drag_or_click_here": "أو اسحب الصورة هنا",
+  "image_size_format": "PNG, JPG, JPEG (بحد أقصى 2MB)",
+  "create_account_button": "إنشاء حساب كشركة"
 }
