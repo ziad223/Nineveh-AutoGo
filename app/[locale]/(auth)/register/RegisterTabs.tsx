@@ -12,7 +12,7 @@ const RegisterTabs = () => {
   return (
       <div>
            <div className="w-full  mx-auto text-center">
-      <div className="flex max-w-md mx-auto bg-gray-100 rounded-xl overflow-hidden mb-8">
+      <div className="flex mx-5  max-w-md md:mx-auto bg-gray-100 rounded-xl overflow-hidden md:mb-8">
         <button
           onClick={() => setActiveTab('client')}
           className={`w-1/2 py-3 font-bold transition-all duration-300 ${

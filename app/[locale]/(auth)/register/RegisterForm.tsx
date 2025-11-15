@@ -1,121 +1,47 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { MdLockOutline } from "react-icons/md";
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast, ToastContainer } from 'react-toastify';
 import Image from 'next/image';
-import phone from '@/public/images/register-phone.png';
-import email from '@/public/images/register-email.png';
-import user from '@/public/images/register-user.png';
-import location from '@/public/images/register-location.png';
 import CustomSelect from '@/components/shared/reusableComponents/CustomSelect';
 import InputComponent from '@/components/shared/reusableComponents/InputComponent';
 import OtpCode from '../login/OtpCode';
 import apiServiceCall from '@/lib/apiServiceCall';
 import { z } from 'zod';
 import { useTranslations, useLocale } from 'next-intl';
-import { FiUnlock } from 'react-icons/fi';
+import phone from '@/public/images/register-phone.png';
+import email from '@/public/images/register-email.png';
+import user from '@/public/images/register-user.png';
+import location from '@/public/images/register-location.png';
 
 const registerSchema = z.object({
   name: z.string().min(3, 'name_min_length'),
   mobile: z.string().regex(/^05\d{8}$/, 'mobile_format'),
   email: z.string().email('invalid_email'),
   city_id: z.string({ required_error: 'city_required' }),
-  accepted_terms: z.literal(true, {
-    errorMap: () => ({ message: 'terms_required' }),
-  }),
+  accepted_terms: z.literal(true, { errorMap: () => ({ message: 'terms_required' }) }),
   profile_image: z.any().optional(),
 });
-const citiesDataa = [
-  { value: '1', label: 'دبي' },
-  { value: '2', label: 'أبوظبي' },
-  { value: '3', label: 'الشارقة' },
-  { value: '4', label: 'عجمان' },
-  { value: '5', label: 'رأس الخيمة' },
-  { value: '6', label: 'أم القيوين' },
-  { value: '7', label: 'الفجيرة' },
-];
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterForm: React.FC = () => {
   const t = useTranslations('RegisterPage');
-  const [mobile, setMobile] = useState<string>('');
   const locale = useLocale();
+  const [mobile, setMobile] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-    setValue,
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      name: '',
-      mobile: '',
-      email: '',
-      city_id: undefined,
-      accepted_terms: false,
-      profile_image: '',
-    },
-  });
+  const { register, handleSubmit, control, formState: { errors }, setValue } =
+    useForm<RegisterFormData>({
+      resolver: zodResolver(registerSchema),
+      defaultValues: { name: '', mobile: '', email: '', city_id: undefined, accepted_terms: false, profile_image: '' },
+    });
 
-  const { data: citiesData, isLoading: isCitiesLoading } = useQuery({
-    queryKey: ['cities'],
-    queryFn: () =>
-      apiServiceCall({
-        url: 'cities',
-        method: 'GET',
-        headers: {
-          'Accept-Language': locale,
-        },
-      }),
-    select: (data) =>
-      data?.data?.cities?.map((city: any) => ({
-        value: city.id.toString(),
-        label: city.title,
-      })) || [],
-  });
-
-  const registerMutation = useMutation({
-    mutationFn: (data: RegisterFormData) =>
-      apiServiceCall({
-        url: 'client/signup',
-        method: 'POST',
-        body: data,
-        headers: {
-          'Accept-Language': locale,
-        },
-      }),
-    onSuccess: (response) => {
-      toast.success(response.message || t('otp_sent'));
-      setIsModalOpen(true);
-    },
-    onError: (error: any) => {
-      if (error?.status === 302) {
-        toast.success(error.data?.message || t('otp_sent'));
-        setIsModalOpen(true);
-        const code = error.data?.data?.code;
-        setMobile(error.data?.data?.mobile);
-        localStorage.setItem('code', JSON.stringify(code));
-      } else {
-        toast.error(error.data?.message || t('register_error'));
-      }
-    },
-  });
-
-  const onSubmit = (data: RegisterFormData) => {
-    registerMutation.mutate(data);
-  };
-
-  // ✅ عند اختيار صورة
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -126,25 +52,35 @@ const RegisterForm: React.FC = () => {
     }
   };
 
+  const registerMutation = useMutation({
+    mutationFn: (data: RegisterFormData) =>
+      apiServiceCall({ url: 'client/signup', method: 'POST', body: data, headers: { 'Accept-Language': locale } }),
+    onSuccess: (res) => { toast.success(res.message || t('otp_sent')); setIsModalOpen(true); },
+    onError: (err: any) => { toast.error(err.data?.message || t('register_error')); },
+  });
+
+  const onSubmit = (data: RegisterFormData) => registerMutation.mutate(data);
+
   return (
     <>
-      <form className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full items-center justify-center" onSubmit={handleSubmit(onSubmit)}>
-  <ToastContainer />
+      <ToastContainer />
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-4xl mx-auto rounded-2xl grid lg:gap-6 gap-2 lg:grid-cols-2 grid-cols-1 mt-7 lg:mt-0">
 
-  <div className="mb-1">
+  {/* الاسم */}
+  <div>
     <InputComponent
       register={register}
       name="name"
       type="text"
       placeholder={t('name_placeholder')}
       icon={<Image src={user} alt={t('name_icon_alt')} width={24} height={24} />}
+      className="!mt-0"
     />
-    {errors.name && (
-      <p className="mt-1 text-sm text-red-600">{t(errors.name.message)}</p>
-    )}
+    {errors.name && <p className="text-sm text-red-600">{t(errors.name.message)}</p>}
   </div>
 
-  <div className="mb-1">
+  {/* الموبايل */}
+  <div>
     <InputComponent
       register={register}
       name="mobile"
@@ -153,146 +89,108 @@ const RegisterForm: React.FC = () => {
       icon={<Image src={phone} alt={t('mobile_icon_alt')} width={24} height={24} />}
       className="!mt-0"
     />
-    {errors.mobile && (
-      <p className="mt-1 text-sm text-red-600">{t(errors.mobile.message)}</p>
-    )}
+    {errors.mobile && <p className="text-sm text-red-600">{t(errors.mobile.message)}</p>}
   </div>
 
-  <div className="mb-1">
+  {/* الايميل */}
+  <div>
     <InputComponent
       register={register}
       name="email"
-      type="text"
+      type="email"
       placeholder={t('email_placeholder')}
       icon={<Image src={email} alt={t('email_icon_alt')} width={24} height={24} />}
       className="!mt-0"
     />
-    {errors.email && (
-      <p className="mt-1 text-sm text-red-600">{t(errors.email.message)}</p>
-    )}
+    {errors.email && <p className="text-sm text-red-600">{t(errors.email.message)}</p>}
   </div>
 
-  <div className="mb-1">
+  {/* المدينة */}
+  <div>
     <CustomSelect
       name="city_id"
       control={control}
-      options={citiesDataa || []}
+      options={[
+        { value: '1', label: 'دبي' },
+        { value: '2', label: 'أبوظبي' },
+        { value: '3', label: 'الشارقة' },
+        { value: '4', label: 'عجمان' },
+        { value: '5', label: 'رأس الخيمة' },
+        { value: '6', label: 'أم القيوين' },
+        { value: '7', label: 'الفجيرة' },
+      ]}
       placeholder={t('city_placeholder')}
-      className="!mt-0"
       icon={<Image src={location} alt={t('city_icon_alt')} width={24} height={24} />}
     />
-    {errors.city_id && (
-      <p className="mt-1 text-sm text-primary">{t(errors.city_id.message)}</p>
-    )}
+    {errors.city_id && <p className="text-sm text-red-600">{t(errors.city_id.message)}</p>}
   </div>
 
-  <div className="mb-1">
+  {/* كلمة المرور */}
+  <div>
     <InputComponent
       register={register}
       name="password"
       type="password"
       placeholder={t('enter_password_placeholder')}
       icon={<MdLockOutline className='text-3xl' />}
-      className="!mt-0"
     />
-    {errors.password && (
-      <p className="mt-1 text-sm text-red-600">{t(errors.password.message)}</p>
-    )}
+    {errors.password && <p className="text-sm text-red-600">{t(errors.password.message)}</p>}
   </div>
 
-  <div className="mb-1">
+  {/* تأكيد كلمة المرور */}
+  <div>
     <InputComponent
       register={register}
       name="confirm_password"
       type="password"
       placeholder={t('confirm_password_placeholder')}
       icon={<MdLockOutline className='text-3xl' />}
-      className="!mt-0"
     />
-    {errors.confirm_password && (
-      <p className="mt-1 text-sm text-red-600">{t(errors.confirm_password.message)}</p>
-    )}
+    {errors.confirm_password && <p className="text-sm text-red-600">{t(errors.confirm_password.message)}</p>}
   </div>
 
-  <div className="mb-4">
+  {/* رفع الصورة - يأخذ كامل العمود */}
+  <div className="lg:col-span-2">
     <label
       htmlFor="profile_image"
-      className="flex flex-col items-center justify-center w-full h-40 bg-[#f5f5f5] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition relative overflow-hidden"
+      className="flex flex-col items-center justify-center w-full h-40 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition relative overflow-hidden"
     >
       {imagePreview ? (
-        <img
-          src={imagePreview}
-          alt={t('image_preview_alt')}
-          className="object-cover w-full h-full rounded-xl"
-        />
+        <img src={imagePreview} alt={t('image_preview_alt')} className="object-cover w-full h-full rounded-xl" />
       ) : (
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
-          <svg
-            aria-hidden="true"
-            className="w-10 h-10 mb-3 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6h.1a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-            ></path>
-          </svg>
-          <p className="mb-2 text-sm text-gray-500">
-            <span className="font-semibold text-primary">{t('click_to_upload')}</span> {t('or_drag_image_here')}
-          </p>
-          <p className="text-xs text-gray-400">{t('accepted_file_formats')} PNG, JPG, JPEG ({t('max_file_size')} 2MB)</p>
+          <p className="text-sm text-gray-400 text-center">{t('click_to_upload')} <br /> {t('or_drag_image_here')}</p>
         </div>
       )}
-      <input
-        id="profile_image"
-        type="file"
-        accept="image/*"
-        className="hidden"
-        {...register('profile_image')}
-        onChange={handleImageChange}
-      />
+      <input id="profile_image" type="file" accept="image/*" className="hidden" {...register('profile_image')} onChange={handleImageChange} />
     </label>
-    {errors.profile_image && (
-      <p className="mt-1 text-sm text-primary">{t(errors.profile_image.message)}</p>
-    )}
+    {errors.profile_image && <p className="text-sm text-red-600">{t(errors.profile_image.message)}</p>}
   </div>
 
-  <div className="flex items-center gap-2 mt-4 mb-1">
-    <input
-      type="checkbox"
-      id="accepted_terms"
-      {...register('accepted_terms')}
-      className="h-5 w-5 text-primary rounded focus:ring"
-    />
-    <label
-      htmlFor="accepted_terms"
-      className="text-sm text-[#989898] flex items-center gap-2"
+  {/* الشروط - كامل العمود */}
+  <div className="lg:col-span-2 flex items-center gap-2">
+    <input type="checkbox" id="accepted_terms" {...register('accepted_terms')} className="h-5 w-5 text-primary rounded focus:ring" />
+    <label htmlFor="accepted_terms" className="text-sm text-gray-500">
+      {t('terms_agree')} <a href="#" className="text-primary underline">{t('terms_link')}</a>
+    </label>
+  </div>
+  {errors.accepted_terms && <p className="text-sm text-red-600 lg:col-span-2">{t(errors.accepted_terms.message)}</p>}
+
+  {/* زرار التسجيل - كامل العمود */}
+  <div className="lg:col-span-2">
+    <button
+      type="submit"
+      disabled={registerMutation.isPending}
+      className="bg-primary w-full text-white py-3 rounded-xl font-bold transition duration-300 hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed"
     >
-      <span>{t('terms_agree')}</span>
-      <a href="#" className="text-primary underline hover:text-primary font-bold">
-        {t('terms_link')}
-      </a>
-    </label>
+      {registerMutation.isPending ? t('creating_account') : t('create_account')}
+    </button>
   </div>
-  {errors.accepted_terms && (
-    <p className="mt-1 text-sm text-primary">{t(errors.accepted_terms.message)}</p>
-  )}
 
-  <button
-    type="submit"
-    disabled={registerMutation.isPending || isCitiesLoading}
-    className="bg-primary w-full text-white py-3 rounded-xl font-bold transition duration-300 hover:primary mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
-  >
-    {registerMutation.isPending ? t('creating_account') : t('create_account')}
-  </button>
 </form>
 
 
+      {/* OTP MODAL */}
       <OtpCode isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} mobileNumber={mobile} />
     </>
   );

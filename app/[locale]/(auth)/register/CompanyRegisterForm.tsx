@@ -33,96 +33,113 @@ const CompanyRegisterForm = () => {
   ];
 
   return (
-    <form className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full" onSubmit={handleSubmit(onSubmit)}> 
-
+<form
+  onSubmit={handleSubmit(onSubmit)}
+  className="max-w- mx-auto  rounded-2xl grid lg:gap-6 gap-2 grid-cols-1 mt-7 lg:mt-0 lg:grid-cols-2"
+>
   {/* اسم الشركة */}
-  <InputComponent
-    register={register}
-    name="company_name"
-    placeholder={t('company_name_placeholder')}
-    type="text"
-    icon={<Image src={user} alt={t('company_name_alt')} width={24} height={24} />}
-    error={errors.company_name?.message as string}
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="company_name"
+      placeholder={t('company_name_placeholder')}
+      type="text"
+      icon={<Image src={user} alt={t('company_name_alt')} width={24} height={24} />}
+      error={errors.company_name?.message as string}
+    />
+  </div>
 
   {/* البريد الإلكتروني */}
-  <InputComponent
-    register={register}
-    name="email"
-    placeholder={t('email_placeholder')}
-    type="email"
-    icon={<Image src={email} alt={t('email_alt')} width={24} height={24} />}
-    error={errors.email?.message as string}
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="email"
+      placeholder={t('email_placeholder')}
+      type="email"
+      icon={<Image src={email} alt={t('email_alt')} width={24} height={24} />}
+      error={errors.email?.message as string}
+    />
+  </div>
 
   {/* رقم الجوال */}
-  <InputComponent
-    register={register}
-    name="mobile"
-    placeholder={t('mobile_placeholder')}
-    type="text"
-    icon={<Image src={phone} alt={t('mobile_alt')} width={24} height={24} />}
-    error={errors.mobile?.message as string}
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="mobile"
+      placeholder={t('mobile_placeholder')}
+      type="text"
+      icon={<Image src={phone} alt={t('mobile_alt')} width={24} height={24} />}
+      error={errors.mobile?.message as string}
+    />
+  </div>
 
   {/* اختيار المدينة */}
-  <CustomSelect
-    name="city"
-    control={control}
-    options={cityOptions}
-    placeholder={t('city_placeholder')}
-    icon={<Image src={location} alt={t('city_alt')} width={24} height={24} />}
-  />
-  {errors.city && (
-    <p className="mt-1 text-sm text-primary">{errors.city.message as string}</p>
-  )}
+  <div>
+    <CustomSelect
+      name="city"
+      control={control}
+      options={cityOptions}
+      placeholder={t('city_placeholder')}
+      icon={<Image src={location} alt={t('city_alt')} width={24} height={24} />}
+    />
+    {errors.city && (
+      <p className="mt-1 text-sm text-primary">{errors.city.message as string}</p>
+    )}
+  </div>
 
   {/* رقم السجل التجاري */}
-  <InputComponent
-    register={register}
-    name="license_number"
-    placeholder={t('license_number_placeholder')}
-    type="text"
-    icon={<Image src={check} alt={t('license_number_alt')} width={24} height={24} />}
-    error={errors.license_number?.message as string}
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="license_number"
+      placeholder={t('license_number_placeholder')}
+      type="text"
+      icon={<Image src={check} alt={t('license_number_alt')} width={24} height={24} />}
+      error={errors.license_number?.message as string}
+    />
+  </div>
 
   {/* نبذة عن الشركة */}
-  <InputComponent
-    register={register}
-    name="description"
-    placeholder={t('description_placeholder')}
-    type="text"
-    className=""
-    icon={<Image src={user} alt={t('description_alt')} width={24} height={24} />}
-    error={errors.description?.message as string}
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="description"
+      placeholder={t('description_placeholder')}
+      type="text"
+      icon={<Image src={user} alt={t('description_alt')} width={24} height={24} />}
+      error={errors.description?.message as string}
+    />
+  </div>
 
   {/* كلمة المرور */}
-  <InputComponent
-    register={register}
-    name="password"
-    type="password"
-    placeholder={t('password_placeholder')}
-    icon={<MdLockOutline className="text-3xl" />}
-    className="!mt-0"
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="password"
+      type="password"
+      placeholder={t('password_placeholder')}
+      icon={<MdLockOutline className="text-3xl" />}
+      className="!mt-0"
+    />
+  </div>
 
   {/* تأكيد كلمة المرور */}
-  <InputComponent
-    register={register}
-    name="confirmPassword"
-    type="password"
-    placeholder={t('confirm_password_placeholder')}
-    icon={<MdLockOutline className="text-3xl" />}
-    className="!mt-0"
-  />
+  <div>
+    <InputComponent
+      register={register}
+      name="confirmPassword"
+      type="password"
+      placeholder={t('confirm_password_placeholder')}
+      icon={<MdLockOutline className="text-3xl" />}
+      className="!mt-0"
+    />
+  </div>
 
-  {/* شعار الشركة */}
-  <div className="mb-4 mt-3">
+  {/* شعار الشركة - كامل العمود */}
+  <div className="lg:col-span-2">
     <label
       htmlFor="profile_image"
-      className="flex flex-col items-center justify-center w-full h-40 bg-[#f5f5f5] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition"
+      className="flex flex-col items-center justify-center w-full h-40 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-primary transition relative overflow-hidden"
     >
       <div className="flex flex-col items-center justify-center pt-5 pb-6">
         <svg
@@ -140,10 +157,10 @@ const CompanyRegisterForm = () => {
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6h.1a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
           ></path>
         </svg>
-        <p className="mb-2 text-sm text-gray-500">
+        <p className="mb-2 text-sm text-gray-500 text-center">
           <span className="font-semibold text-primary">{t('click_to_upload')}</span> {t('drag_or_click_here')}
         </p>
-        <p className="text-xs text-gray-400">{t('image_size_format')}</p>
+        <p className="text-xs text-gray-400 text-center">{t('image_size_format')}</p>
       </div>
       <input
         id="profile_image"
@@ -158,13 +175,17 @@ const CompanyRegisterForm = () => {
     )}
   </div>
 
-  <button
-    type="submit"
-    className="bg-primary text-white py-5 px-8 rounded-xl font-bold transition duration-300 w-auto self-center"
-  >
-    {t('create_account_button')}
-  </button>
+  {/* زرار التسجيل - كامل العمود */}
+  <div className="lg:col-span-2">
+    <button
+      type="submit"
+      className="bg-primary text-white py-5 px-8 rounded-xl font-bold transition duration-300 w-full hover:bg-primary/90"
+    >
+      {t('create_account_button')}
+    </button>
+  </div>
 </form>
+
 
   );
 };
