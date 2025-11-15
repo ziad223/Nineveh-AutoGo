@@ -29,6 +29,7 @@
     "fileHelp": "You can send images or files with your message for clarification"
   },
   "navbar": {
+    "home" : "Home",
     "aboutUs": "About Us",
     "categories": "Categories",
     "latestEvents": "Services",

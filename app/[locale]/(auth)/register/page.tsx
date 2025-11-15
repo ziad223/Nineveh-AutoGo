@@ -49,7 +49,7 @@ const RegisterPage = ({ locale, t }: { locale: string; t: any }) => {
            
 
             <div className="mt-10 text-center">
-              <h4 className="text-[#989898]">{t('existing_account')}</h4>
+              <h4 className="text-[#989898] text-sm">{t('existing_account')}</h4>
               <ClientRegisterLink locale={locale} />
             </div>
           </div>

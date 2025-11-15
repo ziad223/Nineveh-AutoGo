@@ -121,7 +121,7 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
               
               return (
                 <Link
-                href = {`/${locale}`}
+                href = {`/${locale}/category`}
                   key={event.id}
                   className="lg:min-h-[350px] pb-4 bg-[#f7f7f7] rounded-[18px] relative  transition duration-300 flex flex-col"
                 >

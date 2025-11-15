@@ -102,7 +102,7 @@ const Sections: React.FC<SectionsProps> = ({ categories }) => {
           {categoriess.map((category) => (
             <SwiperSlide key={category.id}>
               <Link
-                href={`/${locale}`}
+                href={`/${locale}/category/${category.id}`}
                 className="bg-[#f4f4f4] rounded-[18px] p-5 flex flex-col items-center justify-center gap-5"
               >
                 <div className="lg:w-[152px] lg:h-[152px] w-[80px] h-[80px] mx-auto rounded-full bg-[#fff] flex items-center justify-center">

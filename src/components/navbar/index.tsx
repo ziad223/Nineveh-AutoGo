@@ -220,6 +220,11 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
         <ul className="hidden lg:flex items-center gap-6 text-sm text-[#000]">
           <li>
             <Link href={`/${locale}/about-us`} className="text-sm hover:text-primary transition duration-300">
+              {t("home")}
+            </Link>
+          </li>
+           <li>
+            <Link href={`/${locale}/about-us`} className="text-sm hover:text-primary transition duration-300">
               {t("aboutUs")}
             </Link>
           </li>
@@ -257,6 +262,11 @@ const Navbar = ({ token, bank_account, logo }: NavbarProps) => {
           >
             <ul className="flex flex-col gap-3 text-sm text-[#000]">
               <li>
+                <Link href={`/${locale}/about-us`} onClick={() => setMenuOpen(false)}>
+                  {t("home")}
+                </Link>
+              </li>
+               <li>
                 <Link href={`/${locale}/about-us`} onClick={() => setMenuOpen(false)}>
                   {t("aboutUs")}
                 </Link>

@@ -32,7 +32,7 @@ const LoginPage = async ({ params }: LayoutProps) => {
           <h2 className='font-bold text-[29px] text-primary  my-2'>
             {t('login_title')}
           </h2>
-          <h3 className='text-lg text-[#989898] mb-6'>
+          <h3 className='md:text-lg text-sm text-[#989898] mb-6'>
             {t('login_subtitle')}
           </h3>
 

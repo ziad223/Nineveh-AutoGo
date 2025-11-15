@@ -100,7 +100,7 @@ const LoginForm: React.FC = () => {
     <>
       <form className='flex flex-col w-full' onSubmit={handleSubmit(onSubmit)}>
         <ToastContainer />
-        <div className="mb-4">
+        <div className="">
           <InputComponent
             register={register}
             name="mobile"

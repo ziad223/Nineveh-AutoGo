@@ -7,9 +7,8 @@ import Whatsapp from "@/components/Whatsapp";
 import TechnicalSupport from "@/components/technical-support";
 import { getHomeData  } from "@/lib/serverActions";
 import { cookies } from "next/headers";
-import PaymentStatusModal from "@/components/PaymentStatusModal";
 import Faq from "../../src/components/faq";
-import Packages from "../../src/components/packages";
+// import Packages from "../../src/components/packages";
 
 interface LayoutProps {
   params: Promise<{ locale: string | any }>;
