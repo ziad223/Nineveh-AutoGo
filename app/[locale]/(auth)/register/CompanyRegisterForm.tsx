@@ -35,7 +35,7 @@ const CompanyRegisterForm = () => {
   return (
 <form
   onSubmit={handleSubmit(onSubmit)}
-  className="max-w- mx-auto  rounded-2xl grid lg:gap-6 gap-2 grid-cols-1 mt-7 lg:mt-0 lg:grid-cols-2"
+  className="max-w-4xl mx-auto  rounded-2xl grid lg:gap-6 gap-2 grid-cols-1 mt-7 lg:mt-0 lg:grid-cols-2"
 >
   {/* اسم الشركة */}
   <div>

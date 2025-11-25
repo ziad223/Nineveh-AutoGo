@@ -29,12 +29,12 @@ export default function ServiceDetailsPage({ params }: any) {
     <div>
         <div className="w-full mb-10 ">
        <Container>
-      <section className="relative rounded-xl w-full h-[60vh] bg-primary mt-7 text-white flex items-center">
+      <section className="relative rounded-xl w-full h-[60vh]  mt-7 text-white flex items-center">
         <Image
           src={service.coverImage}
           alt={service.title}
           fill
-          className="object-cover opacity-50 "
+          className="object-cover rounded-[20px] "
         />
         <div className="relative  mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">{service.title}</h1>

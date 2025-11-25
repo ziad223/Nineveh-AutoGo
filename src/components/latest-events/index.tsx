@@ -120,8 +120,7 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
             {eventss.map((event) => {
               
               return (
-                <Link
-                href = {`/${locale}/category`}
+                <div
                   key={event.id}
                   className="lg:min-h-[350px] pb-4 bg-[#f7f7f7] rounded-[18px] relative  transition duration-300 flex flex-col"
                 >
@@ -157,15 +156,16 @@ const LastestEvents: React.FC<LastestEventsProps> = async ({ events , locale }) 
                       </p>
                     </div>
                     
-                    <button 
+                    <Link
+                href = {`/${locale}/service/${event.id}`}
                       className="flex items-center px-3  justify-center lg:mt-auto cursor-pointer font-bold text-sm h-[54px] w-full rounded-[15px] transition duration-300 bg-transparent border border-gray-300 text-black hover:bg-primary hover:text-white  "
                       aria-label={`Book now for ${event.title}`}
                     >
                       {t('bookNow')}
-                    </button>
+                    </Link>
                     </div>
 
-                </Link>
+                </div>
               );
             })}
           </div>
