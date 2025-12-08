@@ -1,11 +1,10 @@
-import About from "@/components/about-us";
-import Header from "@/components/header";
-import HowOrder from "@/components/how-order";
-import LastestEvents from "@/components/latest-events";
-import Sections from "@/components/sections";
-import Whatsapp from "@/components/Whatsapp";
-import TechnicalSupport from "@/components/technical-support";
-import { getHomeData  } from "@/lib/serverActions";
+import About from "../../src/components/about-us";
+import Header from "../../src/components/header";
+import HowOrder from "../../src/components/how-order";
+import LastestEvents from "../../src/components/latest-events";
+import Sections from "../../src/components/sections";
+import TechnicalSupport from "../../src/components/technical-support";
+import { getHomeData  } from "../../src/lib/serverActions";
 import { cookies } from "next/headers";
 import Faq from "../../src/components/faq";
 // import Packages from "../../src/components/packages";
@@ -21,24 +20,22 @@ export default async function HomePage({ params }: LayoutProps) {
      
   const homeData = await getHomeData(locale);
   const sliders = homeData?.data?.sliders || [];
- const aboutUsData = homeData?.data?.pages?.find(
-    (page: any) => page.type === 'about_us'
-  );
+  const about_page = homeData?.data?.about_page || [];
   const categories = homeData?.data?.categories || [];
-  const events = homeData?.data?.events || [];
-  const steps = homeData?.data?.steps || [];
-  const whatsapp = homeData?.data?.settings.whatsapp.value || '';
-   const apper = homeData?.data?.apper;
+  const events = homeData?.data?.services || [];
+  const faq_items = homeData?.data?.faq_items || [];
+  const steps = homeData?.data?.service_flow || [];
+
+
   return (
     <div className="">
-      <Whatsapp whatsapp = {whatsapp}/>
+      {/* <Whatsapp whatsapp = {whatsapp}/> */}
    <Header sliders = {sliders}/>
-   <About data={aboutUsData} />
-   <Sections categories = {categories}/>
-   <LastestEvents events = {events} locale = {locale}/>
-   {/* <Packages/> */}
-   <HowOrder steps = {steps}/>
-   <Faq />
+   <About about_page = {about_page} />
+   <Sections categories = {categories} />
+   <LastestEvents locale = {locale} events = {events} />
+   <HowOrder steps = {steps} />
+   <Faq faq_items = {faq_items} />
    <TechnicalSupport/>
     </div>
   );
