@@ -55,7 +55,7 @@ const Footer: React.FC<Props> = ({ settings, locale, token }) => {
           setStaticPages(res.data);
         }
       } catch (error) {
-        console.error("Failed to fetch static pages:", error);
+        // console.error("Failed to fetch static pages:", error);
       }
     };
 
