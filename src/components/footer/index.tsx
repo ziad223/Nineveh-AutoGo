@@ -16,6 +16,7 @@ import {
 import Container from "../shared/container";
 import apiServiceCall from "@/lib/apiServiceCall";
 import { useTranslations } from "next-intl";
+import { getImageUrl } from "@/lib/getImageUrl";
 
 interface SettingItem {
   id: number;
@@ -65,7 +66,7 @@ const Footer: React.FC<Props> = ({ settings, locale, token }) => {
   const logoUrl = useMemo(() => {
     const logoKey =  "logo_ar" ;
     const logoSetting = settings.find(s => s.key === logoKey);
-    return logoSetting?.value || "/images/default-logo.png"; // صورة افتراضية
+    return getImageUrl(logoSetting?.value, "/images/default-logo.png"); // صورة افتراضية
   }, [settings, locale]);
 
   // فلترة وسائل التواصل الاجتماعي التي لها قيم

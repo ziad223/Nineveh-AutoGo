@@ -5,6 +5,7 @@ import Image from 'next/image'
 // استدعاء دالة جلب المقالات
 import { getBlogPosts } from '../../../src/lib/serverActions'
 import { getTranslations } from 'next-intl/server'
+import { getImageUrl } from "@/lib/getImageUrl";
 
 interface BlogPost {
   id: number
@@ -102,7 +103,7 @@ const BlogCard = ({ post, t, locale }: { post: BlogPost; t: any; locale: string 
       {/* صورة المقال */}
       <Link href={`/${locale}/blogs/${post.slug}`} className="relative h-56 w-full overflow-hidden block">
         <Image
-          src={post.thumbnail || '/images/placeholder.jpg'}
+          src={getImageUrl(post.thumbnail, '/images/logo.png')}
           alt={post.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
